@@ -1,0 +1,2 @@
+import"./assets/styles-ae1da8f4.js";const r=document.querySelector("#task-form"),a=document.querySelector("#task-list");r.addEventListener("submit",n);function n(t){t.preventDefault(),t.target.taskName.value.trim()&&(console.log(t.target.taskName.value.trim()),i(t.target.taskName.value.trim()),t.target.reset())}function i(t){const e=`<li>${t}</li>`;a.insertAdjacentHTML("afterbegin",e)}
+//# sourceMappingURL=commonHelpers.js.map

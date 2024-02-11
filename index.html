@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/practice_2/assets/styles-ae1da8f4.js"></script>
+    <script type="module" crossorigin src="/practice_2/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/practice_2/assets/styles-ae1da8f4.js">
     <link rel="stylesheet" href="/practice_2/assets/styles-4a61970c.css">
   </head>
   <body>
@@ -24,6 +25,13 @@
   </nav>
 </header>
 
+
+    <h2>Задача 2</h2>
+    <form id="task-form">
+      <input type="text" name="taskName" />
+      <button type="submit">Додати</button>
+    </form>
+    <ul id="task-list"></ul>
 
     
   </body>
