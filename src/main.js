@@ -1,6 +1,8 @@
 const form = document.querySelector('#task-form');
 const list = document.querySelector('#task-list');
 
+showTask();
+
 form.addEventListener('submit', onHandleSubmit);
 
 function onHandleSubmit(evt) {
@@ -15,7 +17,7 @@ function onHandleSubmit(evt) {
 
 function createMarkup(value) {
   const markup = `<li>${value}</li>`;
-  list.insertAdjacentHTML('afterbegin', markup);
+  list.insertAdjacentHTML('beforeend', markup);
 }
 
 function addTask(value) {
@@ -23,4 +25,12 @@ function addTask(value) {
 
   array.push(value);
   localStorage.setItem('ui-theme', JSON.stringify(array));
+}
+
+function showTask() {
+  const data = JSON.parse(localStorage.getItem('ui-theme'));
+  if (!data) return;
+
+  const markup = data.map(item => `<li>${item}</li>`).join('');
+  list.insertAdjacentHTML('beforeend', markup);
 }
