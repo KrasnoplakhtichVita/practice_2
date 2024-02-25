@@ -1,7 +1,10 @@
 import { nanoid } from 'nanoid';
+import ref from './js/ref';
+import { showTask } from './js/showMarkup';
+import { getLocalStorage, setLocalStorage } from './js/helpersStorage';
 
-const form = document.querySelector('#task-form');
-const list = document.querySelector('#task-list');
+
+const { form, list } = ref;
 
 showTask();
 
@@ -22,26 +25,14 @@ function createMarkup(value, id) {
 }
 
 function addTask(value) {
-  const array = JSON.parse(localStorage.getItem('ui-theme')) || [];
+  const array = getLocalStorage('ui-theme') || [];
   const id = nanoid();
   createMarkup(value, id);
 
   array.push({ id, name: value });
-  localStorage.setItem('ui-theme', JSON.stringify(array));
+  setLocalStorage('ui-theme', array );
 }
 
-function showTask() {
-  const data = JSON.parse(localStorage.getItem('ui-theme'));
-  if (!data) return;
-
-  const markup = data
-    .map(
-      item =>
-        `<li id="${item.id}">${item.name} <button type="button">X</button></li>`
-    )
-    .join('');
-  list.insertAdjacentHTML('beforeend', markup);
-}
 
 list.addEventListener('click', deleteTask);
 
@@ -51,7 +42,7 @@ function deleteTask(evt) {
   }
 
   evt.target.parentNode.remove();
-  const array = JSON.parse(localStorage.getItem('ui-theme'));
+  const array = getLocalStorage('ui-theme');
   const newArray = array.filter(item => item.id !== evt.target.parentNode.id);
-  localStorage.setItem('ui-theme', JSON.stringify(newArray));
+  setLocalStorage('ui-theme', newArray);
 }
