@@ -42,3 +42,16 @@ function showTask() {
     .join('');
   list.insertAdjacentHTML('beforeend', markup);
 }
+
+list.addEventListener('click', deleteTask);
+
+function deleteTask(evt) {
+  if (evt.target.nodeName !== 'BUTTON') {
+    return;
+  }
+
+  evt.target.parentNode.remove();
+  const array = JSON.parse(localStorage.getItem('ui-theme'));
+  const newArray = array.filter(item => item.id !== evt.target.parentNode.id);
+  localStorage.setItem('ui-theme', JSON.stringify(newArray));
+}
