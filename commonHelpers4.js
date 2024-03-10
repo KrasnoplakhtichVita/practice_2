@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill-3cfb730f.js";import{a}from"./assets/vendor-c2e2fda8.js";const c="https://64859281a795d24810b7146a.mockapi.io/work";async function n(){try{const t=await a.get(`${c}/contacts`);return console.log(t.data),t.data}catch(t){console.log(t)}}async function s(t){const o=await a.get(`${c}/contacts/${t}`);console.log(o)}async function e(t){const o=await a.delete(`${c}/contacts/${t}`);console.log(o)}n();s(4);e(3);
+//# sourceMappingURL=commonHelpers4.js.map
