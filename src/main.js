@@ -2,12 +2,13 @@ import { nanoid } from 'nanoid';
 import ref from './js/ref';
 import { showTask } from './js/showMarkup';
 import { getLocalStorage, setLocalStorage } from './js/helpersStorage';
-import './js/removeElement';
+import { remove } from './js/removeElement';
 import { TASK_KEY } from './js/constants';
 
 const { form, list } = ref;
 
-showTask();
+showTask(list, TASK_KEY);
+remove(list, TASK_KEY);
 
 form.addEventListener('submit', onHandleSubmit);
 

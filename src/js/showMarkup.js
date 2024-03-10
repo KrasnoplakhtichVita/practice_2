@@ -1,9 +1,6 @@
-import ref from './ref';
 import { getLocalStorage } from './helpersStorage';
-import { TASK_KEY } from './constants';
-const { list } = ref;
 
-export function showTask() {
+export function showTask(list, TASK_KEY) {
   const data = getLocalStorage(TASK_KEY);
   if (!data) return;
 
